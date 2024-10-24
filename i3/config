@@ -30,7 +30,7 @@ for_window [tiling] border pixel 0
 
 # Keyboard controls
 # start dmenu
-bindsym $Super+d exec "rofi -modi drun,run -show drun"
+bindsym $Super+d exec "rofi -modi combi -show combi -combi-modi 'window,drun'"
 ## quick access to 1password
 bindsym Control+$Alt+space exec 1password --quick-access
 ## focus Emacs and switch buffer to vterm
