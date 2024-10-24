@@ -1,0 +1,5 @@
+#!/bin/sh
+
+i3-msg '[title="NEMACS"] focus' &&
+    xdotool key --clearmodifiers ctrl+x &&
+    xdotool key --clearmodifiers T

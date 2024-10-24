@@ -1,6 +1,10 @@
 #!/bin/sh
 
+TOUCHPAD="FTCS1000:00 2808:0102 Touchpad"
+MOUSE="FTCS1000:00 2808:0102 Mouse"
+
 set -xe
 
 setxkbmap -option ctrl:nocaps,compose:ralt
-xmodmap -e 'pointer = 1 2 3 5 4 7 6 8 9 10'
+xinput set-prop "$TOUCHPAD" "libinput Tapping Enabled" 1
+xinput set-prop "$TOUCHPAD" "libinput Natural Scrolling Enabled" 1

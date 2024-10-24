@@ -4,18 +4,18 @@
 set $Alt   Mod1
 set $Super Mod4
 
-font pango:Ionicons 10, Iosevka 10
+font pango:Font Awesome Free 12, Iosevka 12
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-# Start Emacs, because it's basically my operating system
-exec --no_startup-id emacs
-
 # Start tray applications
 exec --no-startup-id nm-applet
 exec --no-startup-id 1password --silent
+
+# Start Emacs, because it's basically my operating system
+exec emacs
 
 # Run post-start/post-restart scripts
 exec_always --no-startup-id $HOME/bin/keyboard
@@ -34,7 +34,7 @@ bindsym $Super+d exec "rofi -modi drun,run -show drun"
 ## quick access to 1password
 bindsym Control+$Alt+space exec 1password --quick-access
 ## focus Emacs and switch buffer to vterm
-bindsym $Super+Return --release exec i3-msg '[title="NEMACS"] focus' && xdotool key --clearmodifiers ctrl+x && xdotool key --clearmodifiers T
+bindsym $Super+Return --release exec --no-startup-id $HOME/bin/emacs-terminal
 ## kill focused window
 bindsym $Super+Shift+q kill
 # toggle tiling / floating
@@ -156,7 +156,6 @@ bar {
 	status_command i3status
 	position bottom
 	workspace_min_width 24
-	padding 2px 8px 2px 8px
 	strip_workspace_numbers yes
 
 	colors {
