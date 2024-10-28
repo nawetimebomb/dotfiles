@@ -4,21 +4,24 @@
 set $Alt   Mod1
 set $Super Mod4
 
-font pango:Font Awesome Free 12, Iosevka 12
+font pango:Envy Code R 12
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
 # Start tray applications
-exec --no-startup-id nm-applet
 exec --no-startup-id 1password --silent
+exec --no-startup-id cbatticon
+exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
 
 # Start Emacs, because it's basically my operating system
 exec emacs
 
 # Run post-start/post-restart scripts
 exec_always --no-startup-id $HOME/bin/keyboard
+exec_always --no-startup-id $HOME/bin/launch-polybar
 
 # Default i3 configurations
 floating_modifier $Super
@@ -38,7 +41,7 @@ bindsym $Super+Return --release exec --no-startup-id $HOME/bin/emacs-terminal
 ## kill focused window
 bindsym $Super+Shift+q kill
 # toggle tiling / floating
-bindsym $Super+Shift+space floating
+bindsym $Super+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $Super+space focus mode_toggle
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -152,21 +155,21 @@ mode "resize" {
 
 bindsym $Super+r mode "resize"
 
-bar {
-	status_command i3status
-	position bottom
-	workspace_min_width 24
-	strip_workspace_numbers yes
+# bar {
+# 	status_command i3status
+# 	position bottom
+# 	workspace_min_width 24
+# 	strip_workspace_numbers yes
 
-	colors {
-    	background #141c21
-	    statusline #141c21
-	    separator #141c21
+# 	colors {
+#     	background #141c21
+# 	    statusline #141c21
+# 	    separator #141c21
 
-		# colour of border, background, and text
-		focused_workspace #141c21 #d12f2c #93a1a1
-		active_workspace #141c21 #141c21 #93a1a1
-		inactive_workspace #141c21 #141c21 #93a1a1
-		urgent_workspace #141c21 #b08500 #93a1a1
-	}
-}
+# 		# colour of border, background, and text
+# 		focused_workspace #141c21 #d12f2c #93a1a1
+# 		active_workspace #141c21 #141c21 #93a1a1
+# 		inactive_workspace #141c21 #141c21 #93a1a1
+# 		urgent_workspace #141c21 #b08500 #93a1a1
+# 	}
+# }
